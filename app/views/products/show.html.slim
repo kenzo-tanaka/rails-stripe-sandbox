@@ -1,5 +1,6 @@
 p#notice
   = notice
+= link_to 'Back', products_path
 p
   strong
     | Name:
@@ -8,6 +9,8 @@ p
   strong
     | Price:
   = @product.price
-= link_to 'Edit', edit_product_path(@product)
-|  | 
-= link_to 'Back', products_path
+
+= form_with(model: Order.new, local: true, url: orders_path, method: :post, class: 'js-order-form') do |form|
+  = form.submit '購入'
+
+/ TODO: JavaScript
