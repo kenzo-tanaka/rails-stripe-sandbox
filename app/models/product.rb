@@ -1,3 +1,3 @@
 class Product < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, :price, presence: true
 end
