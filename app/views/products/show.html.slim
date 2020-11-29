@@ -11,6 +11,10 @@ p
   = @product.price
 
 = form_with(model: Order.new, local: true, url: orders_path, method: :post, class: 'js-order-form') do |form|
+  #card-element
+  #card-expiry-element
+  #card-cvc-element
+  #card-errors style="color: red;"
   = form.submit '購入'
 
 / TODO: JavaScript
