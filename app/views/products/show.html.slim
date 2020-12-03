@@ -10,7 +10,7 @@ p
     | Price:
   = @product.price
 
-= form_with(model: Order.new, local: true, url: orders_path, method: :post, id: 'payment-form', class: 'js-order-form') do |form|
+= form_with(model: Order.new, local: true, url: orders_path, method: :post, id: 'payment-form', class: 'js-order-form', data: { payment_intent_id: @payment_intent.client_secret }) do |form|
   = form.hidden_field :product_id, value: @product.id
   #card-element
   #card-expiry-element
