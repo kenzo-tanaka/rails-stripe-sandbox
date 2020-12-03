@@ -22,30 +22,14 @@ $(document).on("turbolinks:load", function() {
     const publicKey = process.env.STRIPE_PUBLIC_KEY;
     const stripe = Stripe(publicKey);
     const elements = stripe.elements();
-    const style = {
-      base: {
-        color: "#32325d",
-        fontFamily: 'Arial, sans-serif',
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: '#CFD7E0'
-        }
-      },
-      invalid: {
-        fontFamily: 'Arial, sans-serif',
-        color: "#fa755a",
-        iconColor: "#fa755a"
-      }
-    };
   
-    const card = elements.create('cardNumber', { style: style });
+    const card = elements.create('cardNumber');
     card.mount('#card-element');
   
-    const cardExpiry = elements.create('cardExpiry', { style: style });
+    const cardExpiry = elements.create('cardExpiry');
     cardExpiry.mount('#card-expiry-element');
   
-    const cardCvc = elements.create('cardCvc', { style: style });
+    const cardCvc = elements.create('cardCvc');
     cardCvc.mount('#card-cvc-element');
   
     card.addEventListener('change', (event) => {
@@ -78,5 +62,6 @@ $(document).on("turbolinks:load", function() {
         }
       })
     })
+    
   }  
 });
