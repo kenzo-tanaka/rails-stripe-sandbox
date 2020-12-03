@@ -17,8 +17,10 @@ ActiveRecord::Schema.define(version: 2020_11_29_104824) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "amount", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -28,4 +30,5 @@ ActiveRecord::Schema.define(version: 2020_11_29_104824) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "orders", "products"
 end

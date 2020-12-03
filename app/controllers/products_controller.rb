@@ -10,6 +10,12 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @payment_intent = Stripe::PaymentIntent.create(
+      {
+        amount: @product.price,
+        currency: 'jpy',
+      }
+    )
   end
 
   # GET /products/new
